@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build && echo > out/.nojekyll",
-    "deploy": " gh-pages -d out -b gh-pages -u 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'"
+    "deploy": " gh-pages -d out -b gh-pages gh-pages --user \"github-actions[bot]\" \"github-actions[bot]@users.noreply.github.com\""
   },
   "dependencies": {
     "next": "15.3.3",
