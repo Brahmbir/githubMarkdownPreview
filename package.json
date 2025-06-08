@@ -1,6 +1,7 @@
 {
   "name": "github_md_preview",
   "version": "0.1.0",
+  "homepage": "https://Brahmbir.github.io/githubMarkdownPreview",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
