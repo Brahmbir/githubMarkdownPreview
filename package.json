@@ -11,6 +11,9 @@
     "deploy": "npm run build && echo > out/.nojekyll"
   },
   "dependencies": {
+    "dompurify": "^3.2.6",
+    "highlight.js": "^11.11.1",
+    "marked": "^15.0.12",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
