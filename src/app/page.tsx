@@ -1,4 +1,3 @@
-import { getResourcePath } from "@/utils/PathFunction";
 import Image from "next/image";
 
 export default function Home() {
@@ -7,7 +6,7 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
-          src={getResourcePath("/next.svg")}
+          src="/next.svg"
           alt="Next.js logo"
           width={180}
           height={38}
@@ -15,7 +14,7 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
+            Get started by editing
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
               src/app/page.tsx
             </code>
@@ -35,7 +34,7 @@ export default function Home() {
           >
             <Image
               className="dark:invert"
-              src={getResourcePath("/vercel.svg")}
+              src="/vercel.svg"
               alt="Vercel logomark"
               width={20}
               height={20}
@@ -61,7 +60,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src={getResourcePath("/file.svg")}
+            src="/file.svg"
             alt="File icon"
             width={16}
             height={16}
@@ -76,7 +75,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src={getResourcePath("/window.svg")}
+            src="/window.svg"
             alt="Window icon"
             width={16}
             height={16}
@@ -91,7 +90,7 @@ export default function Home() {
         >
           <Image
             aria-hidden
-            src={getResourcePath("/globe.svg")}
+            src="/globe.svg"
             alt="Globe icon"
             width={16}
             height={16}
