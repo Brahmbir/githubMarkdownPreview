@@ -26,6 +26,8 @@ jobs:
             
         - name: Build and Deploy Next.js app
           run: npm run deploy
+          env:
+            BASE_PATH: "/githubMarkdownPreview"
 
         - name: Deploy to GitHub Pages
           uses: peaceiris/actions-gh-pages@v3
