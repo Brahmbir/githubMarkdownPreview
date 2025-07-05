@@ -1,10 +1,9 @@
 import EditorePanel from "@/components/EditorPanel";
-import { Navbar } from "@/components/public/Navbar";
 
 export default async function Home() {
   return (
     <div className="gird h-screen">
-      <Navbar />
+      <EditorePanel />
     </div>
   );
 }
