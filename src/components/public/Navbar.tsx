@@ -7,7 +7,7 @@ export interface INavbarProps {}
 
 export function Navbar(props: INavbarProps) {
   return (
-    <header className="border-b border-dracula-comment bg-dracula-background/80 backdrop-blur-sm sticky top-0 z-50">
+    <header className="border-b border-dracula-comment bg-dracula-background backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Logo />
 
@@ -51,9 +51,11 @@ export function Navbar(props: INavbarProps) {
               <Moon className="w-4 h-4" />
             )} */}
           </Button>
-          <Button className="bg-dracula-purple hover:bg-dracula-purple/80 text-dracula-background font-semibold">
-            Open Editor
-          </Button>
+          <Link href={"/project"}>
+            <Button className="bg-dracula-purple hover:bg-dracula-purple/80 text-dracula-background font-semibold">
+              Open Editor
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

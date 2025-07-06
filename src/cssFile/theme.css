@@ -1,0 +1,16 @@
+/* Dracula Theme Colors */
+
+/* define dark theme from root color  */
+@theme inline {
+  --color-dracula-current: var(--current, #44475a);
+  --color-dracula-foreground: var(--foreground, #f8f8f2);
+  --color-dracula-comment: var(--comment, #6272a4);
+  --color-dracula-cyan: var(--cyan, #8be9fd);
+  --color-dracula-green: var(--green, #50fa7b);
+  --color-dracula-orange: var(--orange, #ffb86c);
+  --color-dracula-pink: var(--pink, #ff79c6);
+  --color-dracula-purple: var(--purple, #bd93f9);
+  --color-dracula-red: var(--red, #ff5555);
+  --color-dracula-yellow: var(--yellow, #f1fa8c);
+  --color-dracula-background: var(--background, #282a36);
+}

@@ -17,6 +17,7 @@ export interface Project {
   rootPath: string; // root folder path in FileEntry store
   created: number;
   modified: number;
+  lastOpened?: number;
 }
 
 interface SnapshotEntryFile {

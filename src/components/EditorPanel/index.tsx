@@ -1,24 +1,24 @@
 "use client";
 import React, { useState, useRef, useCallback } from "react";
-import { SidebarView } from "./SidebarContent";
+import { SideBar } from "./SidebarContent";
 import ActivityBar from "./ActivityBar";
-import SideBar from "./SideBar";
+import SideBarElement from "./SideBar";
 import CodeEditor from "./CodeEditor";
+import { useParams } from "next/navigation";
 
-export default function Component() {
-  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
-    new Set(["tools"])
-  );
+export default function EditorPageStructure() {
+  const { projectID } = useParams();
+
   const [sidebarWidth, setSidebarWidth] = useState(256);
   const [isResizing, setIsResizing] = useState(false);
-  const [activeView, setActiveView] = useState<SidebarView>("explorer");
+  const [activeView, setActiveView] = useState<SideBar>(SideBar.FileExplorer);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  const handleViewClick = (view: SidebarView) => {
+  const handleViewClick = (view: SideBar) => {
     if (activeView === view && sidebarOpen) {
       setSidebarOpen(false);
-      setActiveView(null);
+      setActiveView(SideBar.None);
     } else {
       setActiveView(view);
       setSidebarOpen(true);
@@ -43,6 +43,10 @@ export default function Component() {
       };
       document.addEventListener("mousemove", doDrag);
       document.addEventListener("mouseup", stopDrag);
+      return () => {
+        document.removeEventListener("mousemove", doDrag);
+        document.removeEventListener("mouseup", stopDrag);
+      };
     },
     [sidebarOpen, sidebarWidth]
   );
@@ -50,14 +54,17 @@ export default function Component() {
   const codeContent = `// your code here`; // replace with actual content
 
   return (
-    <div className="flex h-screen bg-[#1e1e1e] text-gray-300">
+    <div
+      className="flex h-screen bg-[#1e1e1e] text-gray-300"
+      style={{ cursor: isResizing ? "col-resize" : "default" }}
+    >
       <ActivityBar
         activeView={activeView}
         sidebarOpen={sidebarOpen}
         onSelect={handleViewClick}
       />
       {sidebarOpen && (
-        <SideBar
+        <SideBarElement
           width={sidebarWidth}
           sidebarRef={sidebarRef}
           isResizing={isResizing}
@@ -65,7 +72,6 @@ export default function Component() {
           activeView={activeView}
         />
       )}
-
       <CodeEditor />
     </div>
   );

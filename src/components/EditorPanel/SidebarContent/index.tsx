@@ -1,18 +1,21 @@
 import FileExplorer from "./FileExplorer";
 
-export type SidebarView = "explorer" | "snippet" | null;
-
+export enum SideBar {
+  None,
+  FileExplorer,
+  Snapshots,
+}
 export default function SidebarContent({
   activeView,
 }: {
-  activeView: SidebarView;
+  activeView: SideBar;
 }) {
   // fileTree, folder toggles etc can be moved here or imported
   switch (activeView) {
-    case "explorer":
+    case SideBar.FileExplorer:
       return <FileExplorer />;
-    case "snippet":
-      return <FileExplorer />;
+    // case SideBar.Snapshots:
+    //   return <FileExplorer />;
 
     // add other views (explorer, search) here
     default:

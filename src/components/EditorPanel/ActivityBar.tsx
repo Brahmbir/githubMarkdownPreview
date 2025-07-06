@@ -1,11 +1,19 @@
+import { JSX } from "react";
 import { Button } from "../ui/button";
-import { SidebarView } from "./SidebarContent";
+import { SideBar } from "./SidebarContent";
 import { Files, Search, User, Settings } from "lucide-react";
+import { ComponentType, SVGProps } from "react";
 
-const activityBarItems = [
-  { id: "explorer", icon: Files, label: "Explorer" },
-  { id: "search", icon: Search, label: "Search" },
-  { id: "snapshot", icon: Search, label: "Snapshot" },
+interface SideBarItem {
+  id: SideBar;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  label: string;
+}
+
+const activityBarItems: SideBarItem[] = [
+  { id: SideBar.FileExplorer, icon: Files, label: "Explorer" },
+  { id: SideBar.Snapshots, icon: Search, label: "Search" },
+  // { id: "snapshot", icon: Search, label: "Snapshot" },
 ];
 
 export default function ActivityBar({
@@ -13,9 +21,9 @@ export default function ActivityBar({
   sidebarOpen,
   onSelect,
 }: {
-  activeView: SidebarView;
+  activeView: SideBar;
   sidebarOpen: boolean;
-  onSelect: (view: SidebarView) => void;
+  onSelect: (view: SideBar) => void;
 }) {
   return (
     <div className="w-12 bg-[#333333] border-r border-[#3e3e42] flex flex-col">
@@ -30,7 +38,7 @@ export default function ActivityBar({
                 ? "bg-[#37373d] border-l-[#007acc] text-white"
                 : "text-gray-400"
             }`}
-            onClick={() => onSelect(item.id as SidebarView)}
+            onClick={() => onSelect(item.id)}
             title={item.label}
           >
             <item.icon className="w-6 h-6" />

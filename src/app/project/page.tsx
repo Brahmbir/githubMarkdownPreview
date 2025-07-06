@@ -10,12 +10,12 @@ export default function EditorHome() {
   const [newName, setNewName] = useState("");
   const router = useRouter();
 
-  FileManager.getUsageStats().then((stats) => {
-    console.log("Usage Stats:", stats);
-  });
+  // FileManager.getUsageStats().then((stats) => {
+  //   console.log("Usage Stats:", stats);
+  // });
 
   const refresh = async () => {
-    const list = await FileManager.listProjects();
+    const list = await FileManager.projects.list();
     setProjects(list);
   };
 
@@ -24,18 +24,18 @@ export default function EditorHome() {
   }, []);
 
   const handleUpdate = async (updatedProject: Project) => {
-    await FileManager.updateProject(updatedProject);
+    await FileManager.projects.update(updatedProject);
     refresh();
   };
   const handleCreate = async () => {
     const id = crypto.randomUUID();
-    await FileManager.createProject(id, newName, `/projects/${id}`);
+    await FileManager.projects.create(id, newName, `/projects/${id}`);
     setNewName("");
     refresh();
   };
 
   const handleDelete = async (id: string) => {
-    await FileManager.deleteProject(id);
+    await FileManager.projects.delete(id);
     refresh();
   };
 

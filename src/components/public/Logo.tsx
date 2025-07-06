@@ -1,17 +1,31 @@
+import Link, { LinkProps } from "next/link";
 import * as React from "react";
 
-export interface ILogoProps {
+export interface ILogoProps extends Omit<LinkProps, "href"> {
   type?: "full" | "icon";
+  href?: string;
 }
 
-export function Logo(props: ILogoProps) {
-  const isFull = props.type === "full" || props.type === undefined;
+export function Logo({ type, href, ...props }: ILogoProps) {
+  const isFull = type === "full" || type === undefined;
+
+  const linkHref = href || "/";
   return (
-    <div className="flex items-center space-x-2">
-      <div className="w-8 h-8 bg-dracula-purple rounded-md flex items-center justify-center">
-        {/* <FileText className="w-5 h-5 text-dracula-background" /> */}
+    <Link
+      href={linkHref}
+      {...props}
+      className="flex items-center font-doto space-x-2"
+    >
+      <div className="w-9 h-9 text-2xl font-extrabold bg-dracula-purple text-dracula-background rounded-md flex items-center justify-center">
+        <span className="pl-0.5 flex items-center justify-center text-justify">
+          M
+        </span>
       </div>
-      {isFull && <span className="text-xl font-bold">Inkbase</span>}
-    </div>
+      {isFull && (
+        <span className="text-xl text-dracula-foreground font-medium">
+          MarkMeDown
+        </span>
+      )}
+    </Link>
   );
 }

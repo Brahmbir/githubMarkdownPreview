@@ -17,9 +17,12 @@ export const colours: Record<Colour, string> = {
   yellow: "#f1fa8c",
 };
 
-export function getRandomColour(): string {
+export function getRandomColourText(): Colour {
   const keys = Object.keys(colours);
   const randomIndex = Math.floor(Math.random() * keys.length);
-  const randomKey = keys[randomIndex];
-  return colours[randomKey as Colour];
+  return keys[randomIndex] as Colour;
+}
+
+export function getRandomColour(): string {
+  return colours[getRandomColourText()];
 }
